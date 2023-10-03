@@ -6,7 +6,7 @@
 
 module.exports = {
   siteMetadata: {
-    title: `Zene 'N Zeanne Au-Some Blogs Offline Template`,
+    title: "Zene 'N Zeanne Au-Some Blogs: When I Grow Up...",
     author: `Au-mazin' Creatives`
   },
   plugins: [
@@ -26,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Zene 'N Zeanne Au-Some Blogs Offline Template`,
-        short_name: `ZNZN-MBSA-V0-I0`,
+        name: "Zene 'N Zeanne Au-Some Blogs: When I Grow Up...",
+        short_name: `ZNZN-MBSA-V1-I1`,
         start_url: `/`,
         background_color: `#017BFF`,
         theme_color: `#017BFF`,

@@ -1,10 +1,10 @@
 {
-  "name": "znzn-mbsa-v0-i0",
+  "name": "znzn-mbsa-v1-i1",
   "author": "Au-venturous Buddy <auventurous.buddy@gmail.com>",
   "main": "main.js",
   "build": {
     "icon": "src/images/Au-Some Blogs.png",
-    "productName": "Zene 'N Zeanne Au-Some Blogs Offline Template",
+    "productName": "Zene 'N Zeanne Au-Some Blogs: When I Grow Up...",
     "files": [
       "public/**/*",
       "main.js"
@@ -46,8 +46,8 @@
     }
   },
   "private": true,
-  "description": "A Sample Offline Template for Zene 'N Zeanne: Au-Some Blogs",
-  "version": "0.0.0",
+  "description": "For his first arts class at regular school, Zene struggles to draw himself as his class was asked to draw who they want to be when they grow up.",
+  "version": "1.1.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
