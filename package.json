@@ -29,20 +29,21 @@
           ]
         }
       ]
-    },
-    "mac": {
-      "target": [
+    }
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
         {
-          "target": "dmg",
-          "arch": [
-            "universal"
-          ]
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "background": "src/images/Zene N Zeanne Background.png",
+            "icon": "src/images/Au-Some Blogs.png",
+            "format": "UDRO"
+          }
         }
-      ],
-      "mergeASARs": false
-    },
-    "dmg": {
-      "background": "src/images/Zene N Zeanne Background.png"
+      ]
     }
   },
   "private": true,
@@ -61,12 +62,17 @@
     "electron": "wait-on http://localhost:8000 && electron .",
     "electron-dev": "concurrently \"npm run develop\" \"npm run electron\"",
     "preelectron-pack": "npm run build",
-    "electron-pack": "electron-builder"
+    "electron-pack": "electron-builder",
+    "electron-forge-start": "electron-forge start",
+    "electron-forge-package": "electron-forge package --arch=universal --platform=darwin",
+    "electron-forge-make": "electron-forge make --arch=universal --platform=darwin",
+    "electron-forge-publish": "electron-forge publish"
   },
   "dependencies": {
     "@capacitor/android": "^4.5.0",
     "@capacitor/cli": "^4.5.0",
     "@capacitor/core": "^4.5.0",
+    "@electron-forge/maker-dmg": "^6.4.2",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/material": "^5.10.13",
@@ -98,6 +104,7 @@
     "text-vide": "^1.7.0"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.4.2",
     "concurrently": "^7.5.0",
     "electron": "^21.2.3",
     "electron-builder": "^23.6.0",
