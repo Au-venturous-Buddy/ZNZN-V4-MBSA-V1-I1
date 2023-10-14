@@ -4,6 +4,7 @@ import { textVide } from 'text-vide';
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import WordpressBase from "../components/wordpress-base"
 import allModes from "../assets/modes.json";
+import tableBackgrounds from "../assets/table-backgrounds.json";
 
 function generateSections(images, texts, imagesAlt, callAt, state) {
   var sections = [];
@@ -32,7 +33,7 @@ function generateSections(images, texts, imagesAlt, callAt, state) {
       if(nextImageID < subImages.length && parseInt(subImages[nextImageID].name) === sectionNum) {
         currentImage = (
           <section className="my-2 center-image">
-            <GatsbyImage style={{maxWidth: "60%"}} alt={subImagesAlt[sectionNum]} image={getImage(subImages[nextImageID])} />
+            <img style={{maxWidth: "60%"}} alt={subImagesAlt[sectionNum]} src={subImages[nextImageID].publicURL} />
           </section>
         );
         nextImageID++;
@@ -48,6 +49,8 @@ function generateSections(images, texts, imagesAlt, callAt, state) {
 }
 
 function compileWordpress(data, state, modes) {
+  var callAt = modes[state.currentMode]
+  
   var metadataItems = null;
   var images = {};
   var texts = {};
@@ -93,35 +96,30 @@ function compileWordpress(data, state, modes) {
     languageOptions.push(<option key={value}>{value}</option>)
   })
 
-  var modeOptions = []
-  var callAt = []
-  modes.forEach((mode) => {
-    modeOptions.push(<option key={mode.mode_name}>{mode.mode_name}</option>)
-    if(mode.mode_name === state.currentMode) {
-      callAt = mode.scenes;
-    }
-  })
-
   var sections = generateSections(images, texts, imagesAlt, callAt, state);
 
   return {
     metadataItems,
     languageOptions,
-    modeOptions,
     currentLanguageCode,
     sections
   }
 }
 
 export default function WordpressBlogv2022_3(props) {
+  const modeOptions = Object.keys(allModes);
+  const tableBackgroundOptions = Object.keys(tableBackgrounds);
+
   return(
     <WordpressBase 
       data={props.data}
+      modeOptions={modeOptions}
+      defaultMode={modeOptions[Math.floor(Math.random() * modeOptions.length)]}
       modes={allModes}
-      tableBackgroundBase="table-background"
-      tableBackgroundOptions={['Zene', 'Zeanne', 'Classroom Table']}
+      tableBackgroundOptions={tableBackgroundOptions}
+      defaultTableBackground={tableBackgroundOptions[Math.floor(Math.random() * tableBackgroundOptions.length)]}
+      tableBackgrounds={tableBackgrounds}
       defaultLanguage="English"
-      defaultMode={allModes[Math.floor(Math.random() * allModes.length)]["mode_name"]}
       compile={compileWordpress}
     />
   )
@@ -148,9 +146,6 @@ query {
             format
             version
           }
-        }
-        childImageSharp {
-          gatsbyImageData
         }
       }
     }

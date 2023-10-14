@@ -1,0 +1,20 @@
+{
+    "Zene": {
+        "borderTop": "10px solid rgb(0, 123, 255)",
+        "borderBottom": "10px solid rgb(0, 123, 255)",
+        "background": "rgb(2, 164, 254)",
+        "boxShadow": "0px 5px 10px 5px rgba(0, 0, 0, 0.2)"
+    },
+    "Zeanne": {
+        "borderTop": "10px solid #9542ff",
+        "borderBottom": "10px solid #9542ff",
+        "background": "#a25aff",
+        "boxShadow": "0px 5px 10px 5px rgba(0, 0, 0, 0.2)"
+    },
+    "Classroom Table": {
+        "borderTop": "10px solid #feb956",
+        "borderBottom": "10px solid #feb956",
+        "background": "#feb956",
+        "boxShadow": "0px 5px 10px 5px rgba(0, 0, 0, 0.2)"
+    }
+}
