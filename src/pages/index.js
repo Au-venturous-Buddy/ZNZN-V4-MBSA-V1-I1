@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { textVide } from 'text-vide';
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import WordpressBase from "../components/wordpress-base"
 import allModes from "../assets/modes.json";
 import tableBackgrounds from "../assets/table-backgrounds.json";
