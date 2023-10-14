@@ -4,13 +4,13 @@ import { useState, useEffect } from 'react';
 const isBrowser = typeof window !== "undefined"
 
 function GetWindowDimensions() {
-  //if(isBrowser) {
+  if(isBrowser) {
     const { innerWidth: width, innerHeight: height } = window;
     return {
       width,
       height
     };
-  /*}
+  }
   
   else {
     const width = 1200;
@@ -19,11 +19,11 @@ function GetWindowDimensions() {
       width,
       height
     };
-  }*/
+  }
 }
 
 export default function UseWindowDimensions() {
-  //if(isBrowser) {
+  if(isBrowser) {
     const [windowDimensions, setWindowDimensions] = useState(GetWindowDimensions());
 
     useEffect(() => {
@@ -36,7 +36,7 @@ export default function UseWindowDimensions() {
     }, []);
 
     return windowDimensions;
-  /*}
+  }
 
   else {
     const width = 1200;
@@ -45,5 +45,5 @@ export default function UseWindowDimensions() {
       width,
       height
     };
-  }*/
+  }
 }
