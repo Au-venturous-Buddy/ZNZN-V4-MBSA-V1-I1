@@ -47,12 +47,14 @@ function generateSections(images, texts, imagesAlt, callAt, state) {
   return sections;
 }
 
-function fetchItems(data) {
+function compileWordpress(data, state, modes) {
+  var callAt = modes[state.currentMode]
+  
   var metadataItems = null;
   var images = {};
   var texts = {};
   var imagesAlt = {};
-  var languageCodes = {};
+  var currentLanguageCode = `en`;
   var languages = new Set();
   for(var i = 0; i < data.allFile.edges.length; i++) {
     var nodeItem = data.allFile.edges[i].node
@@ -63,29 +65,24 @@ function fetchItems(data) {
       }
       images[parentFolder].push(nodeItem);
     }
-    else if(nodeItem.relativeDirectory.includes("text")) {
-      var languageFolder = nodeItem.relativeDirectory.split("/")[nodeItem.relativeDirectory.split("/").length - 2]
-      if(nodeItem.ext === ".md" && nodeItem.name === "lang-info") {
-        languages.add(parentFolder)
-        languageCodes[languageFolder] = nodeItem.childMarkdownRemark.frontmatter.language_code
+    else if(nodeItem.relativeDirectory.includes("text") && nodeItem.ext === ".md" && nodeItem.name === "lang-info") {
+      languages.add(parentFolder)
+      if(nodeItem.relativeDirectory.includes("text/" + state.currentLanguage)) {
+        currentLanguageCode = nodeItem.childMarkdownRemark.frontmatter.language_code
       }
-      else if(nodeItem.ext === ".md" && nodeItem.name === "image-alt") {
-        if(!(languageFolder in imagesAlt)) {
-          imagesAlt[languageFolder] = {};
-        } 
-        if(!(parentFolder in imagesAlt[languageFolder])) {
-          imagesAlt[languageFolder][parentFolder] = [];
-        }
-        imagesAlt[languageFolder][parentFolder] = nodeItem.childMarkdownRemark.frontmatter.image_alt
+    }
+    else if(nodeItem.relativeDirectory.includes("text") && nodeItem.ext === ".md" && nodeItem.name === "image-alt" && nodeItem.relativeDirectory.includes("text/" + state.currentLanguage)) {
+      if(!(parentFolder in imagesAlt)) {
+        imagesAlt[parentFolder] = [];
       }
-      else if(nodeItem.ext === ".md") {
-        if(!(languageFolder in texts)) {
-          texts[languageFolder] = {};
+      imagesAlt[parentFolder] = nodeItem.childMarkdownRemark.frontmatter.image_alt
+    }
+    else if(nodeItem.relativeDirectory.includes("text") && nodeItem.ext === ".md") {
+      if(nodeItem.relativeDirectory.includes("text/" + state.currentLanguage.split("-")[0])) {
+        if(!(parentFolder in texts)) {
+          texts[parentFolder] = [];
         }
-        if(!(parentFolder in texts[languageFolder])) {
-          texts[languageFolder][parentFolder] = [];
-        }
-        texts[languageFolder][parentFolder].push(nodeItem);
+        texts[parentFolder].push(nodeItem);
       }
     }
     else if(nodeItem.ext === ".md" && nodeItem.name === "index") {
@@ -98,30 +95,31 @@ function fetchItems(data) {
     languageOptions.push(<option key={value}>{value}</option>)
   })
 
+  var sections = generateSections(images, texts, imagesAlt, callAt, state);
+
   return {
     metadataItems,
-    languageCodes,
     languageOptions,
-    images,
-    texts,
-    imagesAlt
+    currentLanguageCode,
+    sections
   }
 }
 
 export default function WordpressBlogv2022_3(props) {
   const modeOptions = Object.keys(allModes);
   const tableBackgroundOptions = Object.keys(tableBackgrounds);
-  const allMedia = fetchItems(props.data)
 
   return(
     <WordpressBase 
-      data={allMedia}
+      data={props.data}
       modeOptions={modeOptions}
+      defaultMode={modeOptions[Math.floor(Math.random() * modeOptions.length)]}
       modes={allModes}
       tableBackgroundOptions={tableBackgroundOptions}
+      defaultTableBackground={tableBackgroundOptions[Math.floor(Math.random() * tableBackgroundOptions.length)]}
       tableBackgrounds={tableBackgrounds}
       defaultLanguage="English"
-      compile={generateSections}
+      compile={compileWordpress}
     />
   )
 }
