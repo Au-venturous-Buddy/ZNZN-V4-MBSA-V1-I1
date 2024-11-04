@@ -27,7 +27,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Zene 'N Zeanne Au-Some Blogs: When I Grow Up...`,
-        short_name: `ZNZN-MBSA-V1-I1`,
+        short_name: `ZNZN-V4-MBSA-V1-I1`,
         start_url: `/`,
         background_color: `#017BFF`,
         theme_color: `#017BFF`,
