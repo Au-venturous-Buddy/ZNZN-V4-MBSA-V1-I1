@@ -1,5 +1,5 @@
 {
-  "name": "znzn-mbsa-v1-i1",
+  "name": "znzn-v4-mbsa-v1-i1",
   "author": "Au-venturous Buddy <auventurous.buddy@gmail.com>",
   "main": "main.js",
   "build": {
@@ -48,7 +48,7 @@
   },
   "private": true,
   "description": "For his first arts class at regular school, Zene struggles to draw himself as his class was asked to draw who they want to be when they grow up.",
-  "version": "1.1.0",
+  "version": "4.1.1.0",
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
