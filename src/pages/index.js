@@ -25,7 +25,7 @@ function generateSections(images, texts, imagesAlt, callAt, state) {
         if(state.currentBionicReadingFixation > 0) {
           currentTextHTML = textVide(currentTextHTML, { sep: ['<span class="fixation-reading">', '</span>'], fixationPoint: state.currentBionicReadingFixation });
         }
-        currentText = (<section className="my-2" dangerouslySetInnerHTML={{ __html: currentTextHTML }}></section>);
+        currentText = (<section className="my-2" style={{textAlign: "justify"}} dangerouslySetInnerHTML={{ __html: currentTextHTML }}></section>);
         nextTextID++;
       }
   
@@ -38,8 +38,7 @@ function generateSections(images, texts, imagesAlt, callAt, state) {
         nextImageID++;
       }
   
-      sections.push(currentImage)
-      sections.push(currentText)
+      sections.push({"image": currentImage, "text": currentText})
       sectionNum++;
     }
   })
