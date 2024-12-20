@@ -9,8 +9,8 @@ import ResponsiveSize from "../hooks/responsive-size";
 import ResponsiveHeader from "./responsive-header";
 import CloseButton from "./close-button";
 import RangeSlider from 'react-bootstrap-range-slider';
-import { BsFillCheckSquareFill } from "react-icons/bs";
-import { BsFillDashSquareFill } from "react-icons/bs";
+import { FaRegSquare } from "react-icons/fa";
+import { FaCheckSquare } from "react-icons/fa";
 
 const helpTooltip = (message, props) => (
   <Tooltip {...props}>
@@ -175,8 +175,8 @@ function SettingsWindow(props) {
             <Button onClick={props.changeOrientation}>
               {
                 props.state.currentOrientation ?
-                <BsFillCheckSquareFill /> :
-                <BsFillDashSquareFill />
+                <FaCheckSquare /> :
+                <FaRegSquare />
               } Easy Reading Mode
             </Button>
           </section>

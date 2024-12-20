@@ -112,10 +112,10 @@ export default function WordpressBlogv2022_3(props) {
     <WordpressBase 
       data={props.data}
       modeOptions={modeOptions}
-      defaultMode={modeOptions[Math.floor(Math.random() * modeOptions.length)]}
+      defaultMode={modeOptions[0]}
       modes={allModes}
       tableBackgroundOptions={tableBackgroundOptions}
-      defaultTableBackground={tableBackgroundOptions[Math.floor(Math.random() * tableBackgroundOptions.length)]}
+      defaultTableBackground={tableBackgroundOptions[0]}
       tableBackgrounds={tableBackgrounds}
       defaultLanguage="English"
       compile={compileWordpress}
