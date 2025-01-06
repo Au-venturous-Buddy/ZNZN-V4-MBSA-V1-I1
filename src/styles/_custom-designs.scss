@@ -31,6 +31,28 @@
   border-left: 7px dashed black;
 }
 
+.ausome-blogs,
+.ausome-blogs-v2 {
+  font-family: "Chalkduster", "Futura", "Segoe UI", Arial, Helvetica, sans-serif;
+  color: #00f;
+  background-color: rgb(255, 234, 183);
+  background-image: url("../images/Au-Some\ Blogs\ Background.png");
+  background-size: 90%;
+  background-position: center;
+  border-left: 20px dotted gray;
+  margin: 5%;
+  box-shadow: $shadowCenter;
+
+  .ext-web-link,
+  .ext-web-link:visited {
+    color: #00f;
+  }
+
+  .ext-web-link:hover {
+    color: #fff;
+  }
+}
+
 .table-background,
 .table-background-zene {
   border-top: 10px solid rgb(0, 123, 255);
