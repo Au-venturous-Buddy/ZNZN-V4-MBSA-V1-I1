@@ -94,7 +94,7 @@ function CaptionSlideshowToggle(props) {
       </Modal.Header>
       <Modal.Body className="px-0">
         <div className={"my-2 table-background-" + props.state.currentTableBackground.toLowerCase().replace(/ /g, "-")}>
-          <ol className="wordpress-v2022_2">
+          <ol className={props.format}>
             {props.children.map((currentValue, index) => (
               <li key={index}>
                 <SlideThumbnail image={currentValue["image"]} caption={currentValue["text"]} currentIndex={props.state.slideIndex} index={index} goToPage={props.goToPage} closeFunction={handleClose} />
@@ -241,7 +241,7 @@ function SettingsWindow(props) {
       };
 
       return(
-        <Layout menuBarItems={(this.state.currentOrientation ? [(<CaptionSlideshowToggle state={this.state} goToPage={this.goToPage}>{contents.sections}</CaptionSlideshowToggle>)] : []).concat([(<SettingsWindow state={this.state} version={contents.metadataItems.childMarkdownRemark.frontmatter.version} languageOptions={contents.languageOptions} modeOptions={this.props.modeOptions} changeLanguage={this.changeLanguage} changeMode={this.changeMode} changeTableBackground={this.changeTableBackground} changeBionicReadingFixation={this.changeBionicReadingFixation} changeOrientation={this.changeOrientation} />)])} showMenuBar={true}>
+        <Layout menuBarItems={(this.state.currentOrientation ? [(<CaptionSlideshowToggle state={this.state} goToPage={this.goToPage} format={contents.metadataItems.childMarkdownRemark.frontmatter.format}>{contents.sections}</CaptionSlideshowToggle>)] : []).concat([(<SettingsWindow state={this.state} version={contents.metadataItems.childMarkdownRemark.frontmatter.version} languageOptions={contents.languageOptions} modeOptions={this.props.modeOptions} changeLanguage={this.changeLanguage} changeMode={this.changeMode} changeTableBackground={this.changeTableBackground} changeBionicReadingFixation={this.changeBionicReadingFixation} changeOrientation={this.changeOrientation} />)])} showMenuBar={true}>
         <div style={this.props.tableBackgrounds[this.state.currentTableBackground]}>
           <div className={`p-3 ${contents.metadataItems.childMarkdownRemark.frontmatter.format}`}>
           <div style={{textAlign: "center"}}>
