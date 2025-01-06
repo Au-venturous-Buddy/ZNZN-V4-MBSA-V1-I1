@@ -1,36 +1,3 @@
-.wordpress,
-.wordpress-v2022_2,
-.wordpress-v2022_3,
-.miscellaneous-page {
-  font-family: "Chalkduster", "Futura", "Segoe UI", Arial, Helvetica, sans-serif;
-  color: $primaryColor;
-  background-color: white;
-  background-image: url("../images/Au-Some Blogs Background.png");
-  background-size: 90%;
-  background-position: center;
-  border-left: 20px dotted gray;
-  margin: 5%;
-  box-shadow: $shadowCenter;
-
-  a,
-  a:visited,
-  a:hover {
-    color: $primaryColor;
-  }
-
-  a:hover {
-    background: rgba(255, 255, 0, 0.5);
-    box-shadow: none;
-    border-radius: 0px;
-    padding: 0px;
-  }
-}
-
-.miscellaneous-page {
-  font-family: "Futura", "Segoe UI", Arial, Helvetica, sans-serif;
-  border-left: 7px dashed black;
-}
-
 .ausome-blogs,
 .ausome-blogs-v2 {
   font-family: "Chalkduster", "Futura", "Segoe UI", Arial, Helvetica, sans-serif;
