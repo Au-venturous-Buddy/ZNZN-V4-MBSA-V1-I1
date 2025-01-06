@@ -54,13 +54,13 @@
 }
 
 .comic-strip-page-thumbnail .comic-strip-page-number {
-  color: $primaryColor;
+  color: #00f;
 }
 
 .comic-strip-page-thumbnail-current .comic-strip-page-number,
 .comic-strip-page-thumbnail:hover .comic-strip-page-number,
 .comic-strip-page-thumbnail:focus .comic-strip-page-number {
-  color: $primaryColor;
+  color: #00f;
   background: rgba(0, 205, 0, 0.5);
   border-left: 5px solid rgba(0, 139, 0, 0.7);
   border-right: 5px solid rgba(0, 139, 0, 0.7);
