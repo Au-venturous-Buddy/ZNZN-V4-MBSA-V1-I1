@@ -161,12 +161,6 @@ function SettingsWindow(props) {
           </section>
           <section className="mb-3">
             <div className='align-items-center pb-3' style={{textAlign: 'center', color: "#017BFF"}}>
-              <ResponsiveHeader level={2} maxSize={1.5} minScreenSize={500}>{`Page Size`}</ResponsiveHeader>
-            </div>
-            <RangeSlider className="hover-shadow mt-3" variant="dark" tooltipLabel={currentValue => `${currentValue}%`} tooltipPlacement='top' tooltip='on' onChange={changeEvent => props.changePageSize(changeEvent.target.value)} value={props.state.currentSize} />
-          </section>
-          <section className="mb-3">
-            <div className='align-items-center pb-3' style={{textAlign: 'center', color: "#017BFF"}}>
               <ResponsiveHeader level={2} maxSize={1.5} minScreenSize={500}>{`Bionic Reading Level`}</ResponsiveHeader>
             </div>
             <RangeSlider className="hover-shadow mt-3" variant="dark" tooltipPlacement='top' tooltip='on' onChange={changeEvent => props.changeBionicReadingFixation(changeEvent.target.value)} min={0} max={5} value={props.state.currentBionicReadingFixationIndex} />
@@ -194,7 +188,6 @@ function SettingsWindow(props) {
       currentLanguage: this.props.defaultLanguage,
       currentMode: this.props.defaultMode,
       currentTableBackground: this.props.defaultTableBackground,
-      currentSize: 65,
       currentBionicReadingFixationIndex: 0,
       currentBionicReadingFixation: 0,
       currentOrientation: false,
@@ -246,8 +239,6 @@ function SettingsWindow(props) {
         arrows: false,
         beforeChange: (current, next) => this.setState({ slideIndex: next })
       };
-
-      console.log(this.props.modeOptions)
 
       return(
         <Layout menuBarItems={(this.state.currentOrientation ? [(<CaptionSlideshowToggle state={this.state} goToPage={this.goToPage}>{contents.sections}</CaptionSlideshowToggle>)] : []).concat([(<SettingsWindow state={this.state} version={contents.metadataItems.childMarkdownRemark.frontmatter.version} languageOptions={contents.languageOptions} modeOptions={this.props.modeOptions} changeLanguage={this.changeLanguage} changeMode={this.changeMode} changeTableBackground={this.changeTableBackground} changeBionicReadingFixation={this.changeBionicReadingFixation} changeOrientation={this.changeOrientation} />)])} showMenuBar={true}>
