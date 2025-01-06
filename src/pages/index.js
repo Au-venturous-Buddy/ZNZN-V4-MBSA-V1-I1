@@ -32,7 +32,7 @@ function generateSections(images, texts, imagesAlt, callAt, state) {
       if(nextImageID < subImages.length && parseInt(subImages[nextImageID].name) === sectionNum) {
         currentImage = (
           <section className="my-2 center-image">
-            <img style={{maxWidth: "60%"}} alt={subImagesAlt[sectionNum]} src={subImages[nextImageID].publicURL} />
+            <img style={{maxWidth: state.currentOrientation ? "100%" : "60%"}} alt={subImagesAlt[sectionNum]} src={subImages[nextImageID].publicURL} />
           </section>
         );
         nextImageID++;
